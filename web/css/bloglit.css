@@ -1,0 +1,114 @@
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../lib/font-awesome/fonts/fontawesome-webfont.eot');
+    src: url('../lib/font-awesome/fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'), url('../lib/font-awesome/fonts/fontawesome-webfont.woff') format('woff'), url('../lib/font-awesome/fonts/fontawesome-webfont.ttf') format('truetype'), url('../lib/font-awesome/fonts/fontawesome-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body{
+    padding-top:50px;
+    background-image: url(../images/double_lined/double_lined.png);
+}
+
+.chapterTitle:hover, .chapterTitle:focus {
+    text-decoration: none;
+}
+
+.adminTable {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.sidebar
+{
+    border:1px solid black;
+    margin-top:30px;
+}
+.jumbotron
+{
+    background-image: url(../images/aurores1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.jumbotron.chapter
+{
+    background-image: url(../images/landscape.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.header
+{
+    color : white !important;
+}
+.snippet 
+{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+}
+.snippet + p
+{
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 17px !important;
+}
+.info
+{
+    width:35%;
+    height:100%;
+    border:1px solid black;
+}
+.chapter-index
+{
+    box-shadow: 3px 3px 10px grey;
+    margin: 20px;
+    background-color: white;
+    width:60%;
+}
+.form-comment
+{
+    border:1px solid black;
+    background-color: aquamarine;
+    padding: 10px;
+}
+.form-control
+{
+   margin:7px;
+}
+.btn-primary
+{
+    margin-left: 8px;
+}
+.commentaires
+{
+    background-color:aqua;
+    box-shadow: 3px 3px 10px grey;
+    padding:10px;
+    text-align: center;
+}
+.title
+{
+    font-family: 'Josefin Slab', serif;
+    font-size:30px;
+}
+.only-comments
+{
+    border:1px solid black;
+    height:10%;
+    padding: 10px;
+    margin:20px;
+    width:100%;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size:15px;
+    background-color: aliceblue;
+    border-left: 10px solid grey;
+}
+.comments-right{
+    text-align: right;
+}
+#errorPanel {
+
+    padding-top: 30px;
+
+    padding-bottom: 10px;
+
+}

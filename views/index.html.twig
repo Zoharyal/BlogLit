@@ -1,0 +1,26 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="jumbotron">
+            <h1 class="header">Billet simple pour l'Alaska</h1>      
+            <p class="header">Un nouveau roman par Jean Forteroche</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 info">  
+            <h1>Jean Forteroche</h1>
+        </div>
+        {% for chapter in chapters%}
+        <div class="col-md-8 chapter-index pull-right">
+            <a href="{{path('chapter', {id: chapter.id}) }}" class="chapterTitle"><h3 class="title">{{chapter.title}}</h3></a>
+            <span>Posté le  {{ chapter.dateAjout|date("d/m/y") }} </span>
+            <p class="snippet">{{chapter.content|truncate(150)|raw}}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

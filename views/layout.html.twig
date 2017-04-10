@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ asset('/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/bloglit.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Open+Sans" rel="stylesheet"> 
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <title>Blog de Jean - {% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+            <div class="container"A>
+                <div class="navbar-header">
+                    <!--Menu mobile-->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!--Fin menu mobile-->
+                    <a class="navbar-brand" href="{{ path('home') }}">Blog de Jean</a>
+                </div>
+            <div class="collapse navbar-collapse" id="navbar-coll  apse-target">
+                <ul class="nav navbar-nav navbar-right">
+                    {% if app.user and is_granted('ROLE_ADMIN') %}
+                        <li class="{% if adminMenu is defined %}active{% endif %}"><a href="{{ path('admin') }}"><span class="glyphicon glyphicon-cog"></span> Administration</a>
+                        </li>
+                        {% endif %} {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-user"></span> Welcome, {{ app.user.username }} <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('logout') }}">Log out</a>
+                                </li>
+                        </li>
+                            {%else%}
+                        <li>
+                            <a href="{{ path('login') }}" class="navbar-brand navbar-right">
+                                <span class="glyphicon glyphicon-log-in"></span> S'identifier
+                            </a>
+                        </li>
+                    {%endif%}
+                </ul>
+            </div>  
+            </div>
+            <!-- /.container -->
+        </nav>
+        <div id="content">{% block content %}{% endblock %}</div>
+    </div>
+    <!-- jQuery -->
+    <script src="{{ asset('/lib/jquery/jquery.js') }}"></script>
+    <!-- JavaScript Boostrap plugin -->
+    <script src="{{ asset('/lib/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!-- TinyMCE -->
+    <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=h4iggp2wc9phg51zu825fwli1s2agxv2ummxlaqxe02tcff5"></script>
+    <script src="{{ asset('/lib/jquery/tinyfix.js') }}"></script>
+    <script>
+        $(function() {
+	       $('.form-group').on('submit', function (e) {
+		  var editorContent = $.trim(tinyMCE.activeEditor.getBody().textContent);
+		  if( editorContent == "" || editorContent == null) {
+			e.preventDefault();
+			if (!$('#editor-error-message').length) {
+				$('<span id="editor-error-message" style="color:red;">Le contenu de l\'article est vide.</span>').insertAfter($(tinyMCE.activeEditor.getContainer()));
+			}
+		}
+	})
+});
+    </script>
+        
+           
+        
+</body>
+
+</html>

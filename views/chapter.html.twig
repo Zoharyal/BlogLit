@@ -1,0 +1,52 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ chapter.title }}{% endblock %}
+
+{% block content %}
+  <div class="row">
+        <div class="jumbotron chapter">
+            <h1 class="header">Billet simple pour l'Alaska</h1>      
+            <h2 class="header">{{ chapter.title }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+        <h2 class="title">{{ chapter.title }}</h2>
+        <p class="snippet">{{ chapter.content|raw }}</p>
+        <h3 class="commentaires"><i class="fa fa-comments-o" aria-hidden="true"></i> Vos avis et commentaires <i class="fa fa-comments-o" aria-hidden="true"></i></h3>
+            {% if commentForm %}
+        {{ form_start(commentForm) }}
+            <div class="form-comment">
+                <div class="form-group">
+                    {{ form_errors(commentForm.content) }}
+                    {{ form_widget(commentForm.author, { 'attr':  {
+                        'placeholder': 'Entrer votre pseudonyme',
+                        'class':'form-control',
+                    }}) }}
+                    {{ form_widget(commentForm.content, { 'attr':  {
+                        'rows': '3',
+                        'class': 'form-control',
+                        'placeholder': 'Taper votre commentaire ici'
+                    }}) }}
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Publier commentaire" />
+                </div>
+            </div>
+        {{ form_end(commentForm) }}
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        {% endif %}
+        {% for comment in comments %}
+            <div class="only-comments"><p> {{ comment.content }}</p><p class="comments-right">Par <strong>{{comment.author}}</strong> le {{ comment.dateAjout|date("d/m/y") }}</p>
+            </div><br>
+        {% else %}
+            Aucun commentaire. 
+        {% endfor %}
+        </div>
+</div>
+</p>
+{% endblock %}
