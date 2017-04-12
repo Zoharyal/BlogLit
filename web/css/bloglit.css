@@ -11,7 +11,11 @@ body{
     padding-top:50px;
     background-image: url(../images/double_lined/double_lined.png);
 }
-
+.navbar
+{
+    background-color: #ECEEE9;
+    border-color: #D4D6D1;
+}
 .chapterTitle:hover, .chapterTitle:focus {
     text-decoration: none;
 }
@@ -45,17 +49,22 @@ body{
 {
     font-family: 'Open Sans', sans-serif;
     font-size: 17px;
+    line-height: 1.8;
+    
 }
 .snippet + p
 {
     font-family: 'Open Sans', sans-serif !important;
     font-size: 17px !important;
+    line-height: 0.8;
 }
 .info
 {
     width:35%;
     height:100%;
-    border:1px solid black;
+    box-shadow: 1px 1px 5px grey;
+    background-color: white;
+    margin-top: 20px;
 }
 .chapter-index
 {
@@ -67,7 +76,7 @@ body{
 .form-comment
 {
     border:1px solid black;
-    background-color: aquamarine;
+    background-color: #CED5DF;
     padding: 10px;
 }
 .form-control
@@ -80,7 +89,7 @@ body{
 }
 .commentaires
 {
-    background-color:aqua;
+    background-color:#337ab7;
     box-shadow: 3px 3px 10px grey;
     padding:10px;
     text-align: center;
@@ -99,7 +108,7 @@ body{
     width:100%;
     font-family: 'Open Sans', sans-serif !important;
     font-size:15px;
-    background-color: aliceblue;
+    background-color: #AEB9CB;
     border-left: 10px solid grey;
 }
 .comments-right{
@@ -111,4 +120,18 @@ body{
 
     padding-bottom: 10px;
 
+}
+.info-chapter
+{
+    background-color: white;
+    display: block;
+}
+.chapterInfo
+{
+    float: right;
+}
+.social
+{
+    display: inline;
+    margin: 10px;
 }

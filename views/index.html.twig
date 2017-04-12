@@ -12,6 +12,17 @@
     <div class="row">
         <div class="col-md-4 info">  
             <h1>Jean Forteroche</h1>
+            <img src="{{ asset('/images/totoro1.jpg') }}" class="img-responsive">
+            <h3>Description</h3>
+            <p>Description blablablalblal
+            bla bla bla
+           </p>
+           <h3>Mes réseaux sociaux</h3>
+            <a href="http://facebook.com" target="_blank"><img src="{{ asset('/images/facebook.png')}}" class="img-responsive social"></a>
+            <a href="http://twitter.com" target="_blank"><img src="{{ asset('/images/twitter.png')}}" class="img-responsive social"></a>
+            <a href="http://amazon.com" target="_blank"><img src="{{ asset('/images/amazon.png')}}" class="img-responsive social"></a>
+            <a href="http://instagram.com" target="_blank"><img src="{{ asset('/images/instagram.png')}}" class="img-responsive social"></a>
+            
         </div>
         {% for chapter in chapters%}
         <div class="col-md-8 chapter-index pull-right">

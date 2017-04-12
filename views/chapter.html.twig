@@ -10,12 +10,12 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8">
         <h2 class="title">{{ chapter.title }}</h2>
         <p class="snippet">{{ chapter.content|raw }}</p>
         <h3 class="commentaires"><i class="fa fa-comments-o" aria-hidden="true"></i> Vos avis et commentaires <i class="fa fa-comments-o" aria-hidden="true"></i></h3>
             {% if commentForm %}
-        {{ form_start(commentForm) }}
+            {{ form_start(commentForm) }}
             <div class="form-comment">
                 <div class="form-group">
                     {{ form_errors(commentForm.content) }}
@@ -46,6 +46,13 @@
         {% else %}
             Aucun commentaire. 
         {% endfor %}
+        </div>
+        
+        <div class="col-md-4 info-chapter sidebar">
+            <h3>Les derniers chapitres publiés</h3>
+            {%for chapter in chapters %}
+             <a href="{{path('chapter', {id: chapter.id}) }}">{{chapter.title}}</a><span class="chapterInfo">Posté le  {{ chapter.dateAjout|date("d/m/y") }}</span></br>
+            {%endfor%}
         </div>
 </div>
 </p>

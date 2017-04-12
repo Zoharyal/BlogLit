@@ -28,6 +28,7 @@ class HomeController {
      */
     public function chapterAction($id, Request $request, Application $app) {
         $chapter = $app['dao.chapter']->find($id);
+        $chapters = $app['dao.chapter']->findAll();
         $commentFormView = null;
             // A user he can add comments
             $comment = new Comment();
@@ -44,6 +45,7 @@ class HomeController {
         
         return $app['twig']->render('chapter.html.twig', array(
             'chapter' => $chapter,
+            'chapters' => $chapters,
             'comments' => $comments,
             'commentForm' => $commentFormView));
     }
