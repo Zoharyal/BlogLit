@@ -17,6 +17,12 @@ class Chapter {
         $this->id = $id;
         return $this;
     }
+    public function getNextId() {
+        return $this->id + 1;
+    }
+    public function getPrevId() {
+        return $this-> id - 1;
+    }
     
     public function getTitle() {
         return $this->title;

@@ -1,7 +1,6 @@
 $(function() {
 	var options = {
 		selector: '#chapter_content',
-        valid_elements:'*[*]',
 		menubar: '',
 		plugins: "textcolor colorpicker code wordcount",
 		toolbar: "bold italic underline forecolor fontsizeselect | cut copy paste | bullist numlist | undo redo | alignleft aligncenter alignright alignjustify",

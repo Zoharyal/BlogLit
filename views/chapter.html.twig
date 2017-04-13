@@ -13,6 +13,11 @@
         <div class="col-md-8">
         <h2 class="title">{{ chapter.title }}</h2>
         <p class="snippet">{{ chapter.content|raw }}</p>
+        {% set next = chapter.getNextId() %}
+        {% set prev = chapter.getPrevId() %}
+        <a href="{{path('chapter', {id: next}) }}" class="chapterTitle"><h3 class="title">Chapitre suivant</h3></a>
+        <a href="{{path('chapter', {id: prev}) }}" class="chapterTitle"><h3 class="title">Chapitre précedent</h3></a>
+        
         <h3 class="commentaires"><i class="fa fa-comments-o" aria-hidden="true"></i> Vos avis et commentaires <i class="fa fa-comments-o" aria-hidden="true"></i></h3>
             {% if commentForm %}
             {{ form_start(commentForm) }}
@@ -50,7 +55,7 @@
         
         <div class="col-md-4 info-chapter sidebar">
             <h3>Les derniers chapitres publiés</h3>
-            {%for chapter in chapters %}
+             {% for chapter in chapters|slice(0,3) %}
              <a href="{{path('chapter', {id: chapter.id}) }}">{{chapter.title}}</a><span class="chapterInfo">Posté le  {{ chapter.dateAjout|date("d/m/y") }}</span></br>
             {%endfor%}
         </div>
