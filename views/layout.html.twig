@@ -3,10 +3,12 @@
 
 <head>
     <meta charset="utf-8">
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ asset('/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/bloglit.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/mediaqueries.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Open+Sans" rel="stylesheet"> 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <title>Blog de Jean - {% block title %}{% endblock %}</title>
@@ -15,10 +17,10 @@
 <body>
     <div class="container">
         <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
-            <div class="container"A>
+            <div class="container">
                 <div class="navbar-header">
                     <!--Menu mobile-->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -26,7 +28,7 @@
                     <!--Fin menu mobile-->
                     <a class="navbar-brand" href="{{ path('home') }}">Blog de Jean</a>
                 </div>
-            <div class="collapse navbar-collapse" id="navbar-coll  apse-target">
+            <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav navbar-right">
                     {% if app.user and is_granted('ROLE_ADMIN') %}
                         <li class="{% if adminMenu is defined %}active{% endif %}"><a href="{{ path('admin') }}"><span class="glyphicon glyphicon-cog"></span> Administration</a>
@@ -52,32 +54,35 @@
             </div>
             <!-- /.container -->
         </nav>
-        <div id="content">{% block content %}
-            {% endblock %}</div>
-    </div>
+        <div id="content">{% block content %}{% endblock %}</div>
+        <footer class="footer">
+            <p>Blog pour projet 4 OpenClassrooms</p>
+            <a href="{{ path('credit')}}">Credit</a>
+        </footer>
+        
+        </div>
+    
     <!-- jQuery -->
     <script src="{{ asset('/lib/jquery/jquery.js') }}"></script>
     <!-- JavaScript Boostrap plugin -->
     <script src="{{ asset('/lib/bootstrap/js/bootstrap.min.js') }}"></script>
     <!-- TinyMCE -->
     <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=h4iggp2wc9phg51zu825fwli1s2agxv2ummxlaqxe02tcff5"></script>
-    <script src="{{ asset('/lib/jquery/tinyfix.js') }}"></script>
+    <script src="{{ asset('/lib/jquery/tinyfix.js') }}"></script> 
     <script>
         $(function() {
-	       $('.form-group').on('submit', function (e) {
+	       $('.form-horizontal').on('submit', function (e) {
+               console.log('bonjour');
 		  var editorContent = $.trim(tinyMCE.activeEditor.getBody().textContent);
 		  if( editorContent == "" || editorContent == null) {
 			e.preventDefault();
 			if (!$('#editor-error-message').length) {
-				$('<span id="editor-error-message" style="color:red;">Le contenu de l\'article est vide.</span>').insertAfter($(tinyMCE.activeEditor.getContainer()));
+				$('<span id="editor-error-message" style="color:red;">Le contenu du chapitre est vide.</span>').insertAfter($(tinyMCE.activeEditor.getContainer()));
 			}
 		}
 	})
 });
     </script>
-        
-           
-        
 </body>
 
 </html>

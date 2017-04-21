@@ -37,6 +37,6 @@ Cras consectetur pellentesque velit, nec lacinia nibh tincidunt ut. Nulla sit am
 Donec ut sem ut tortor facilisis viverra. Suspendisse rutrum magna ante, sed aliquet ex cursus quis. Aenean faucibus fringilla facilisis. Integer eget pulvinar enim. Morbi lobortis nunc est, a viverra velit facilisis eget. Vestibulum nec varius dolor, id feugiat nulla. Vestibulum fermentum viverra sem vitae commodo. Sed eleifend eros magna, eu convallis enim convallis eget. Vivamus sem nibh, ornare vitae varius quis, interdum sed libero.", '2017-04-03');
 
 
-insert into t_comment values (1,'bonjour',1,'2017-04-03','Simon');
+
 insert into t_user values
 (3, 'admin', '$2y$13$A8MQM2ZNOi99EW.ML7srhOJsCaybSbexAj/0yXrJs4gQ/2BqMMW2K', 'EDDsl&fBCJB|a5XUtAlnQN8', 'ROLE_ADMIN');

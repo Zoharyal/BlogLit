@@ -5,12 +5,12 @@
 {% block content %}
     <div class="row">
         <div class="jumbotron">
-            <h1 class="header">Billet simple pour l'Alaska</h1>      
+            <h1 class="header">Billet simple pour l'Alaska</h1>  
             <p class="header">Un nouveau roman par Jean Forteroche</p>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4 info">  
+        <div class="col-md-4 col-xs-12 col-sm-4 info">  
             <h1>Jean Forteroche</h1>
             <img src="{{ asset('/images/totoro1.jpg') }}" class="img-responsive">
             <h3>Description</h3>
@@ -21,11 +21,10 @@
             <a href="http://facebook.com" target="_blank"><img src="{{ asset('/images/facebook.png')}}" class="img-responsive social"></a>
             <a href="http://twitter.com" target="_blank"><img src="{{ asset('/images/twitter.png')}}" class="img-responsive social"></a>
             <a href="http://amazon.com" target="_blank"><img src="{{ asset('/images/amazon.png')}}" class="img-responsive social"></a>
-            <a href="http://instagram.com" target="_blank"><img src="{{ asset('/images/instagram.png')}}" class="img-responsive social"></a>
-            
+            <a href="http://instagram.com" target="_blank"><img src="{{ asset('/images/instagram.png')}}" class="img-responsive social"></a>  
         </div>
         {% for chapter in chapters%}
-        <div class="col-md-8 chapter-index pull-right">
+        <div class="col-md-8 col-xs-12 chapter-index pull-right">
             <a href="{{path('chapter', {id: chapter.id}) }}" class="chapterTitle"><h3 class="title">{{chapter.title}}</h3></a>
             <span>Posté le  {{ chapter.dateAjout|date("d/m/y") }} </span>
             <p class="snippet">{{chapter.content|truncate(150)|raw}}</p>

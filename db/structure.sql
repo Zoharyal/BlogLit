@@ -14,6 +14,7 @@ chap_dateAjout date not null
 create table t_comment (
     com_id integer not null primary key auto_increment,
     com_content varchar(500) not null,
+    parent_id integer not null,
     chap_id integer not null,
     com_date date not null,
     com_author varchar(150) not null,

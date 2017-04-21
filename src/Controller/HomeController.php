@@ -19,6 +19,10 @@ class HomeController {
         return $app['twig']->render('index.html.twig', array('chapters' => $chapters));
     }
     
+    public function creditAction(Application $app) {
+        return $app['twig']->render('credit.html.twig');
+    }
+    
     /**
      * chapter details controller.
      *
@@ -28,6 +32,8 @@ class HomeController {
      */
     public function chapterAction($id, Request $request, Application $app) {
         $chapter = $app['dao.chapter']->find($id);
+        $next = $app['dao.chapter']->findNext($id);
+        $prev = $app['dao.chapter']->findPrev($id);
         $chapters = $app['dao.chapter']->findAll();
         $commentFormView = null;
             // A user he can add comments
@@ -39,15 +45,22 @@ class HomeController {
                 $app['dao.comment']->save($comment);
                 $app['session']->getFlashBag()->add('success', 'Votre commentaire a été ajouté avec succès.');
             }
+            
             $commentFormView = $commentForm->createView();
         
         $comments = $app['dao.comment']->findAllByChapter($id);
         
         return $app['twig']->render('chapter.html.twig', array(
+            'prev' => $prev,
+            'next' => $next,
             'chapter' => $chapter,
             'chapters' => $chapters,
             'comments' => $comments,
             'commentForm' => $commentFormView));
+    }
+    
+    public function chapterNextAction($id, Request $request, Application $app) {
+        
     }
     
     /**

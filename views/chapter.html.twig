@@ -3,21 +3,30 @@
 {% block title %}{{ chapter.title }}{% endblock %}
 
 {% block content %}
+
+
   <div class="row">
         <div class="jumbotron chapter">
-            <h1 class="header">Billet simple pour l'Alaska</h1>      
+            <h1 class="header">Billet simple pour l'Alaska</h1> 
             <h2 class="header">{{ chapter.title }}</h2>
         </div>
     </div>
     <div class="row">
         <div class="col-md-8">
         <h2 class="title">{{ chapter.title }}</h2>
-        <p class="snippet">{{ chapter.content|raw }}</p>
-        {% set next = chapter.getNextId() %}
-        {% set prev = chapter.getPrevId() %}
-        <a href="{{path('chapter', {id: next}) }}" class="chapterTitle"><h3 class="title">Chapitre suivant</h3></a>
-        <a href="{{path('chapter', {id: prev}) }}" class="chapterTitle"><h3 class="title">Chapitre précedent</h3></a>
-        
+            <p class="snippet">{{ chapter.content|raw }}</p> 
+        <div class="col-xs-12 chapterAnchor">
+            <div class="col-xs-6">
+            {% if prev != null %}
+            <a href="{{path('chapter', {id: prev.id}) }}" class="chapterPrev"><i class="fa fa-arrow-left" aria-hidden="true"></i> <b> {{prev.title}}</b></a>
+            {% endif %}
+            </div>
+            <div class="col-xs-6 text-right">
+            {% if next != null %}
+            <a href="{{path('chapter', {id: next.id}) }}" class="chapterNext"><b>{{next.title }} </b><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+            {% endif %} 
+            </div>
+        </div>
         <h3 class="commentaires"><i class="fa fa-comments-o" aria-hidden="true"></i> Vos avis et commentaires <i class="fa fa-comments-o" aria-hidden="true"></i></h3>
             {% if commentForm %}
             {{ form_start(commentForm) }}
@@ -25,13 +34,16 @@
                 <div class="form-group">
                     {{ form_errors(commentForm.content) }}
                     {{ form_widget(commentForm.author, { 'attr':  {
+                        'rows' : '1',
                         'placeholder': 'Entrer votre pseudonyme',
                         'class':'form-control',
+                        
                     }}) }}
                     {{ form_widget(commentForm.content, { 'attr':  {
                         'rows': '3',
                         'class': 'form-control',
-                        'placeholder': 'Taper votre commentaire ici'
+                        'placeholder': 'Taper votre commentaire ici',
+                        
                     }}) }}
                 </div>
                 <div class="form-group">
@@ -60,5 +72,4 @@
             {%endfor%}
         </div>
 </div>
-</p>
 {% endblock %}

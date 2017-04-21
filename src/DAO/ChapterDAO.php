@@ -34,13 +34,27 @@ class ChapterDAO extends DAO {
         
         if ($row) {
             return $this->buildDomainObject($row);
-        } else {
-            throw new \Exception("No chapter matching id " . $id);
-        }
+        } 
     }
     
+    public function findNext($id) {
+        $sql = " SELECT * FROM t_chapter where chap_id > $id ORDER BY chap_id ASC LIMIT 1";
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
+        
+        if($row) {
+            return $this->buildDomainObject($row);
+        } 
+    }
     
-    
+    public function findPrev($id) {
+        $sql = " SELECT * FROM t_chapter where chap_id < $id ORDER BY chap_id DESC LIMIT 1";
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
+        
+        if($row) {
+            return $this->buildDomainObject($row);
+        }
+        
+    }
     public function save(Chapter $chapter) {
         $chapterData = array(
             'chap_title' => $chapter->getTitle(),
@@ -52,7 +66,6 @@ class ChapterDAO extends DAO {
             $this->getDb()->update('t_chapter', $chapterData, array('chap_id' => $chapter->getId()));
         } else {
             $this->getDb()->insert('t_chapter', $chapterData);
-            
             $id = $this->getDb()->lastInsertId();
             $chapter->setId($id);
         }

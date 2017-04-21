@@ -46,18 +46,6 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.level' => $app['monolog.level']
 ));
 
-// Register error handler
-
-// Admin home page
-$app->get('/admin', function() use ($app) {
-    $chapters = $app['dao.chapter']->findAll();
-    $comments = $app['dao.comment']->findAll();
-    $users = $app['dao.user']->findAll();
-    return $app['twig']->render('admin.html.twig', array(
-        'chapters' => $chapters,
-        'comments' => $comments,
-        'users' => $users));
-})->bind('admin');
 
 //register services
 

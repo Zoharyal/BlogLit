@@ -19,6 +19,17 @@ body{
 .chapterTitle:hover, .chapterTitle:focus {
     text-decoration: none;
 }
+.chapterNext:hover, .chapterPrev:hover, .chapterNext:focus, .chapterPrev:focus
+{
+    text-decoration: none;
+}
+.chapterNext, .chapterPrev
+{
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 15px;
+
+}
+
 
 .adminTable {
     margin-top: 20px;
@@ -60,7 +71,7 @@ body{
 }
 .info
 {
-    width:35%;
+    
     height:100%;
     box-shadow: 1px 1px 5px grey;
     background-color: white;
@@ -91,6 +102,7 @@ body{
 {
     background-color:#337ab7;
     box-shadow: 3px 3px 10px grey;
+    margin-top:40px;
     padding:10px;
     text-align: center;
 }
@@ -134,4 +146,18 @@ body{
 {
     display: inline;
     margin: 10px;
+}
+.footer
+{
+    border-top: 1px solid #ccc;
+    padding-top:10px;
+    text-align: center;
+}
+.next-link
+{
+    float: right;
+}
+.chapter-title
+{
+    border-bottom: 1px solid black;
 }

@@ -36,3 +36,6 @@ $app->match('/admin/comment/{id}/edit', "BlogLit\Controller\AdminController::edi
 $app->get('/admin/comment/{id}/delete', "BlogLit\Controller\AdminController::deleteCommentAction")
 ->bind('admin_comment_delete');
 
+//credit page
+$app->match('/credit', "BlogLit\Controller\HomeController::creditAction")
+->bind('credit');

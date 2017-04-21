@@ -37,7 +37,9 @@ class AdminController {
         $chapterForm->handleRequest($request);
         if ($chapterForm->isSubmitted() && $chapterForm->isValid()) {
             $app['dao.chapter']->save($chapter);
+         
             $app['session']->getFlashBag()->add('success', 'Le chapitre a été ajouté avec succès.');
+            return $app->redirect($app['url_generator']->generate('admin'));
         }
         return $app['twig']->render('chapter_form.html.twig', array(
             'title' => 'New Chapter',
@@ -56,7 +58,7 @@ class AdminController {
         $chapterForm = $app['form.factory']->create(ChapterType::class, $chapter);
         $chapterForm->handleRequest($request);
         if ($chapterForm->isSubmitted() && $chapterForm->isValid()) {
-            $app['dao.chapter']->save($article);
+            $app['dao.chapter']->save($chapter);
             $app['session']->getFlashBag()->add('success', 'Le chapitre a été modifié avec succès.');
         }
         return $app['twig']->render('chapter_form.html.twig', array(
@@ -93,6 +95,7 @@ class AdminController {
         $commentForm->handleRequest($request);
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
             $app['dao.comment']->save($comment);
+            return $app->redirect($app['url_generator']->generate('admin'));
             $app['session']->getFlashBag()->add('success', 'Le commentaire a été modifié avec succès.');
         }
         return $app['twig']->render('comment_form.html.twig', array(
