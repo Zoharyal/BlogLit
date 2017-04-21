@@ -26,7 +26,7 @@ body{
 .chapterNext, .chapterPrev
 {
     font-family: 'Open Sans', sans-serif !important;
-    font-size: 15px;
+    font-size: 20px;
 
 }
 
@@ -35,11 +35,7 @@ body{
     margin-top: 20px;
     margin-bottom: 20px;
 }
-.sidebar
-{
-    border:1px solid black;
-    margin-top:30px;
-}
+
 .jumbotron
 {
     background-image: url(../images/aurores1.jpg);
@@ -102,7 +98,7 @@ body{
 {
     background-color:#337ab7;
     box-shadow: 3px 3px 10px grey;
-    margin-top:40px;
+    margin-top:50px;
     padding:10px;
     text-align: center;
 }
@@ -129,14 +125,23 @@ body{
 #errorPanel {
 
     padding-top: 30px;
-
     padding-bottom: 10px;
 
 }
 .info-chapter
 {
-    background-color: white;
+    background-image:url(../images/double_lined/linen.png);
     display: block;
+    font-family: 'Open Sans', sans-serif;
+    margin-top:30px;
+}
+.info-chapter>a:hover, .info-chapter>a:focus
+{
+   text-decoration: none;
+}
+.info-chapter>a
+{
+    font-size:20px;
 }
 .chapterInfo
 {
