@@ -72,7 +72,6 @@
     <script>
         $(function() {
 	       $('.form-horizontal').on('submit', function (e) {
-               console.log('bonjour');
 		  var editorContent = $.trim(tinyMCE.activeEditor.getBody().textContent);
 		  if( editorContent == "" || editorContent == null) {
 			e.preventDefault();

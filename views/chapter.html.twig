@@ -34,12 +34,15 @@
                 <div class="form-group">
                     {{ form_errors(commentForm.content) }}
                     {{ form_widget(commentForm.author, { 'attr':  {
+                        'value' : '',
                         'rows' : '1',
-                        'placeholder': 'Entrer votre pseudonyme',
                         'class':'form-control',
+                        'placeholder': 'Entrer votre pseudonyme',
+                       
                         
                     }}) }}
                     {{ form_widget(commentForm.content, { 'attr':  {
+                        'value' : ' ',
                         'rows': '3',
                         'class': 'form-control',
                         'placeholder': 'Taper votre commentaire ici',
@@ -47,16 +50,16 @@
                     }}) }}
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Publier commentaire" />
+                    <input type="submit" class="btn btn-primary" value="Publier commentaire" id="btn-submit" />
                 </div>
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                 <div class="alert alert-success">
+                {{ flashMessage }}
+                </div>
+                {% endfor %}
+                {% endif %}
             </div>
         {{ form_end(commentForm) }}
-        {% for flashMessage in app.session.flashbag.get('success') %}
-            <div class="alert alert-success">
-                {{ flashMessage }}
-            </div>
-        {% endfor %}
-        {% endif %}
         {% for comment in comments %}
             <div class="only-comments"><p> {{ comment.content }}</p><p class="comments-right">Par <strong>{{comment.author}}</strong> le {{ comment.dateAjout|date("d/m/y") }}</p>
             </div><br>
@@ -68,7 +71,7 @@
         <div class="col-md-4 info-chapter sidebar">
             <h3>Les derniers chapitres publiés</h3>
              {% for chapter in chapters|slice(0,3) %}
-             <a href="{{path('chapter', {id: chapter.id}) }}">{{chapter.title}}</a><span class="chapterInfo">Posté le  {{ chapter.dateAjout|date("d/m/y") }}</span></br>
+             <a href="{{path('chapter', {id: chapter.id})}}">{{chapter.title}}</a><span class="chapterInfo">Posté le  {{ chapter.dateAjout|date("d/m/y") }}</span></br>
             {%endfor%}
         </div>
 </div>

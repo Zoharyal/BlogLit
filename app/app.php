@@ -62,8 +62,8 @@ $app['dao.comment'] = function ($app) {
 };
 
 //register error handler
-$app->error(function (\Exception $e, Request $request, $code) use ($app) {
-    switch ($code) {
+/**$app->error(function (\Exception $e, Request $request, $code) use ($app) {
+    //switch ($code) {
         case 403:
             $message = 'Access denied.';
             break;
@@ -74,4 +74,4 @@ $app->error(function (\Exception $e, Request $request, $code) use ($app) {
             $message = "Something went wrong.";
     }
     return $app['twig']->render('error.html.twig', array('message' => $message));
-});
+});*/

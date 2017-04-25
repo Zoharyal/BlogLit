@@ -59,10 +59,6 @@ class HomeController {
             'commentForm' => $commentFormView));
     }
     
-    public function chapterNextAction($id, Request $request, Application $app) {
-        
-    }
-    
     /**
      * User login controller.
      *

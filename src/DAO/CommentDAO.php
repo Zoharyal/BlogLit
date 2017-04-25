@@ -85,7 +85,6 @@ class CommentDAO extends DAO
         $comment->setContent($row['com_content']);
         $comment->setAuthor($row['com_author']);
         $comment->setDateAjout($row['com_date']);
-        $comment->setParentId($row['parent_id']);
         
         
         if (array_key_exists('chap_id', $row)) {
