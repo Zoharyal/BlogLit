@@ -26,7 +26,7 @@ class AdminController {
     }
 
     /**
-     * Add article controller.
+     * Add chapter controller.
      *
      * @param Request $request Incoming request
      * @param Application $app Silex application
@@ -41,15 +41,14 @@ class AdminController {
             $app['session']->getFlashBag()->add('success', 'Le chapitre a été ajouté avec succès.');
             return $app->redirect($app['url_generator']->generate('admin'));
         }
-        return $app['twig']->render('chapter_form.html.twig', array(
-            'title' => 'New Chapter',
-            'chapterForm' => $chapterForm->createView()));
+        return $app['twig']->render('chapter_form.html.twig', array('title' => 'New Chapter',
+              'chapterForm' => $chapterForm->createView()));
     }
 
     /**
      * Edit chapter controller.
      *
-     * @param integer $id Article id
+     * @param integer $id Chapter id
      * @param Request $request Incoming request
      * @param Application $app Silex application
      */
@@ -69,13 +68,13 @@ class AdminController {
     /**
      * Delete chapter controller.
      *
-     * @param integer $id Article id
+     * @param integer $id Chapter id
      * @param Application $app Silex application
      */
     public function deleteChapterAction($id, Application $app) {
         // Delete all associated comments
         $app['dao.comment']->deleteAllByChapter($id);
-        // Delete the article
+        // Delete the chapter
         $app['dao.chapter']->delete($id);
         $app['session']->getFlashBag()->add('success', 'Le chapitre a été supprimé avec succès.');
         // Redirect to admin home page
@@ -98,9 +97,8 @@ class AdminController {
             return $app->redirect($app['url_generator']->generate('admin'));
             $app['session']->getFlashBag()->add('success', 'Le commentaire a été modifié avec succès.');
         }
-        return $app['twig']->render('comment_form.html.twig', array(
-            'title' => 'Edit comment',
-            'commentForm' => $commentForm->createView()));
+        return $app['twig']->render('comment_form.html.twig', array('title' => 'Edit comment',
+              'commentForm' => $commentForm->createView()));
     }
 
     /**

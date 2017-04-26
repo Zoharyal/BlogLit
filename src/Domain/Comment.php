@@ -9,8 +9,7 @@ class Comment
     private $content;
     private $chapter;
     private $dateAjout;
-    private $parentId;
-    private $children;
+    
     
     public function getId() {
         return $this->id;
@@ -57,23 +56,6 @@ class Comment
         return $this;
     }
     
-    public function getParentId() {
-        return $this->parentId;
-    }
-    
-    public function setParentId($parentId) {
-        $this->parentId = $parentId;
-        return $this;
-    }
-    
-    public function getChildren() {
-        return $this->children;
-    }
-    
-    public function setChildren() {
-        $this->children = $children;
-        return $this;
-    }
     public function createDate() {
         return date("Y-m-d");
     }

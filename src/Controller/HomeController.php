@@ -36,14 +36,18 @@ class HomeController {
         $prev = $app['dao.chapter']->findPrev($id);
         $chapters = $app['dao.chapter']->findAll();
         $commentFormView = null;
-            // A user he can add comments
-            $comment = new Comment();
-            $comment->setChapter($chapter);
-            $commentForm = $app['form.factory']->create(CommentType::class, $comment);
-            $commentForm->handleRequest($request);
+        // A user he can add comments
+        $comment = new Comment();
+        $comment->setChapter($chapter);
+        $commentForm = $app['form.factory']->create(CommentType::class, $comment);
+        $commentForm->handleRequest($request);
             if ($commentForm->isSubmitted() && $commentForm->isValid()) {
                 $app['dao.comment']->save($comment);
                 $app['session']->getFlashBag()->add('success', 'Votre commentaire a été ajouté avec succès.');
+                unset($comment);
+                unset($commentForm);
+                $comment = new Comment();
+                $commentForm = $app['form.factory']->create(CommentType::class, $comment);
             }
             
             $commentFormView = $commentForm->createView();

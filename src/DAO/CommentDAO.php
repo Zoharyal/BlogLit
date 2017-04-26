@@ -15,7 +15,7 @@ class CommentDAO extends DAO
     
     public function findAllByChapter($chapterId) {
         $chapter = $this->chapterDAO->find($chapterId); 
-        $sql = "select com_id, com_content, com_author, com_date, parent_id from t_comment where chap_id=? order by com_id";
+        $sql = "select com_id, com_content, com_author, com_date from t_comment where chap_id=? order by com_id";
         $result = $this->getDb()->fetchAll($sql, array($chapterId));
         $comments = array();
         
