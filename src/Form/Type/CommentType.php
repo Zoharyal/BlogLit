@@ -6,14 +6,17 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class CommentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options) 
     {
         $builder
-            ->add('author', TextType::class)
-            ->add('content', TextareaType::class);
+            ->add('author', TextType::class, array(
+            'constraints' => array(new Assert\NotBlank(), new Assert\Length(array('min' => 1)))))
+            ->add('content', TextareaType::class, array(
+            'constraints' => array(new Assert\NotBlank(), new Assert\Length(array('min' => 10)))));
     }
     
     public function getName() {

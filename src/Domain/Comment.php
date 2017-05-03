@@ -1,11 +1,18 @@
 <?php
 
 namespace BlogLit\Domain;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class Comment
 {
     private $id;
+    /**
+     *@Assert\Length(min=2)
+     */
     private $author;
+    /**
+     *@Assert\Notblank()
+     */
     private $content;
     private $chapter;
     private $dateAjout;
