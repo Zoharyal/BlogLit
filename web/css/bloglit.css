@@ -30,7 +30,6 @@ body{
 
 }
 
-
 .adminTable {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -110,7 +109,7 @@ body{
 .only-comments
 {
     border:1px solid black;
-    height:10%;
+    height:auto;
     padding: 10px;
     margin:20px;
     width:100%;
@@ -161,4 +160,8 @@ body{
 .next-link
 {
     float: right;
+}
+.well
+{
+    height: auto;
 }

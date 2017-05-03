@@ -63,15 +63,15 @@ $app['dao.comment'] = function ($app) {
 
 //register error handler
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
-    //switch ($code) {
+    switch ($code) {
         case 403:
-            $message = 'Access denied.';
+            $message = 'Accès refusé';
             break;
         case 404:
-            $message = 'The requested resource could not be found.';
+            $message = 'La ressource demandé n\'a pas été trouvé';
             break;
         default:
-            $message = "Something went wrong.";
+            $message = "On dirait qu'il y une erreur.";
     }
     return $app['twig']->render('error.html.twig', array('message' => $message));
 });

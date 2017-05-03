@@ -14,7 +14,7 @@
     <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
         <ul class="nav nav-tabs nav-justified">
             <li class="active"><a href="#chapitres" data-toggle="tab">Chapitres</a></li>
-            <li><a href="#comments" data-toggle="tab">Comments</a></li>
+            <li><a href="#comments" data-toggle="tab">Commentaires</a></li>
             
         </ul>
     </div>
@@ -26,8 +26,8 @@
             <table class="table table-hover table-condensed">
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th class="text-center">Content</th>
+                        <th>Titre</th>
+                        <th class="text-center">Contenu</th>
                         <th class="text-center">Date de publication</th>
                         <th class="text-center">Action</th>
                     </tr>
@@ -46,10 +46,10 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title" id="myModalLabel">Confirmation needed</h4>
+                                        <h4 class="modal-title" id="myModalLabel">Confirmation obligatoire</h4>
                                     </div>
                                     <div class="modal-body">
-                                        Voulez vous vraiment supprimer ce chapitre? ?
+                                        Voulez vous vraiment supprimer ce chapitre?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
@@ -74,9 +74,9 @@
             <table class="table table-hover table-condensed">
                 <thead>
                     <tr>
-                        <th>Chapter</th>
-                        <th class="text-center">Author</th>
-                        <th class="text-center">Content</th>
+                        <th>Chapitre</th>
+                        <th class="text-center">Auteur</th>
+                        <th class="text-center">Contenu</th>
                         <th class="text-center">Action</th>  <!-- Actions column -->
                     </tr>
                 </thead>
@@ -94,14 +94,14 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title" id="myModalLabel">Confirmation needed</h4>
+                                        <h4 class="modal-title" id="myModalLabel">Confirmation obligatoire</h4>
                                     </div>
                                     <div class="modal-body">
-                                        Do you really want to delete this comment ?
+                                        Voulez vous vraiment supprimé ce commentaire ? 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                        <a href="{{ path('admin_comment_delete', { 'id': comment.id }) }}" class="btn btn-danger">Confirm</a>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                        <a href="{{ path('admin_comment_delete', { 'id': comment.id }) }}" class="btn btn-danger">Confirmer</a>
                                     </div>
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
@@ -112,7 +112,7 @@
             </table>
         </div>
         {% else %}
-        <div class="alert alert-warning">No comments found.</div>
+        <div class="alert alert-warning">Il n'y a aucun commentaire</div>
         {% endif %}
         
     </div>

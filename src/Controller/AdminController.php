@@ -41,7 +41,7 @@ class AdminController {
             $app['session']->getFlashBag()->add('success', 'Le chapitre a été ajouté avec succès.');
             return $app->redirect($app['url_generator']->generate('admin'));
         }
-        return $app['twig']->render('chapter_form.html.twig', array('title' => 'New Chapter',
+        return $app['twig']->render('chapter_form.html.twig', array('title' => 'Nouveau Chapitre',
               'chapterForm' => $chapterForm->createView()));
     }
 
@@ -97,7 +97,7 @@ class AdminController {
             return $app->redirect($app['url_generator']->generate('admin'));
             $app['session']->getFlashBag()->add('success', 'Le commentaire a été modifié avec succès.');
         }
-        return $app['twig']->render('comment_form.html.twig', array('title' => 'Edit comment',
+        return $app['twig']->render('comment_form.html.twig', array('title' => 'Editer commentaire',
               'commentForm' => $commentForm->createView()));
     }
 
@@ -112,33 +112,5 @@ class AdminController {
         $app['session']->getFlashBag()->add('success', 'Le commentaire a été supprimé avec succès.');
         // Redirect to admin home page
         return $app->redirect($app['url_generator']->generate('admin'));
-    }
-
-    /**
-     * Add user controller.
-     *
-     * @param Request $request Incoming request
-     * @param Application $app Silex application
-     */
-    public function addUserAction(Request $request, Application $app) {
-        $user = new User();
-        $userForm = $app['form.factory']->create(UserType::class, $user);
-        $userForm->handleRequest($request);
-        if ($userForm->isSubmitted() && $userForm->isValid()) {
-            // generate a random salt value
-            $salt = substr(md5(time()), 0, 23);
-            $user->setSalt($salt);
-            $plainPassword = $user->getPassword();
-            // find the default encoder
-            $encoder = $app['security.encoder.bcrypt'];
-            // compute the encoded password
-            $password = $encoder->encodePassword($plainPassword, $user->getSalt());
-            $user->setPassword($password); 
-            $app['dao.user']->save($user);
-            $app['session']->getFlashBag()->add('success', 'The user was successfully created.');
-        }
-        return $app['twig']->render('user_form.html.twig', array(
-            'title' => 'New user',
-            'userForm' => $userForm->createView()));
     }
 }

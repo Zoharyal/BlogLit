@@ -59,7 +59,7 @@
             </div>
         {{ form_end(commentForm) }}
         {% for comment in comments %}
-            <div class="only-comments"><p> {{ comment.content }}</p><p class="comments-right">Par <strong>{{comment.author}}</strong> le {{ comment.dateAjout|date("d/m/y") }}</p>
+            <div class="only-comments"><p> {{ comment.content|nl2br }}</p><p class="comments-right">Par <strong>{{comment.author}}</strong> le {{ comment.dateAjout|date("d/m/y") }}</p>
             </div><br>
         {% else %}
             Aucun commentaire. 
