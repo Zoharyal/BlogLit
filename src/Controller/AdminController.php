@@ -19,7 +19,7 @@ class AdminController {
     public function indexAction(Application $app) {
         $chapters = $app['dao.chapter']->findAll();
         $comments = $app['dao.comment']->findAll();
-        return $app['twig']->render('admin.html.twig', array(
+        return $app['twig']->render('Admin/admin.html.twig', array(
             'chapters' => $chapters,
             'comments' => $comments
             ));
@@ -60,7 +60,7 @@ class AdminController {
             $app['dao.chapter']->save($chapter);
             $app['session']->getFlashBag()->add('success', 'Le chapitre a été modifié avec succès.');
         }
-        return $app['twig']->render('chapter_form.html.twig', array(
+        return $app['twig']->render('Admin/chapter_form.html.twig', array(
             'title' => 'Edit chapter',
             'chapterForm' => $chapterForm->createView()));
     }
@@ -97,7 +97,7 @@ class AdminController {
             return $app->redirect($app['url_generator']->generate('admin'));
             $app['session']->getFlashBag()->add('success', 'Le commentaire a été modifié avec succès.');
         }
-        return $app['twig']->render('comment_form.html.twig', array('title' => 'Editer commentaire',
+        return $app['twig']->render('Admin/comment_form.html.twig', array('title' => 'Editer commentaire',
               'commentForm' => $commentForm->createView()));
     }
 
