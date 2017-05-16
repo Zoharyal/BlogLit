@@ -16,11 +16,11 @@ class HomeController {
      */
     public function indexAction(Application $app) {
         $chapters = $app['dao.chapter']->findAll();
-        return $app['twig']->render('index.html.twig', array('chapters' => $chapters));
+        return $app['twig']->render('Home/index.html.twig', array('chapters' => $chapters));
     }
     
     public function creditAction(Application $app) {
-        return $app['twig']->render('credit.html.twig');
+        return $app['twig']->render('Home/credit.html.twig');
     }
     
     /**
@@ -37,10 +37,12 @@ class HomeController {
         $chapters = $app['dao.chapter']->findAll();
         $commentFormView = null;
         // A user he can add comments
+        
         $comment = new Comment();
         $comment->setChapter($chapter);
         $commentForm = $app['form.factory']->create(CommentType::class, $comment);
         $commentForm->handleRequest($request);
+        
             if ($commentForm->isSubmitted() && $commentForm->isValid()) {
                 $app['dao.comment']->save($comment);
                 $app['session']->getFlashBag()->add('success', 'Votre commentaire a été ajouté avec succès.');
@@ -54,7 +56,7 @@ class HomeController {
         
         $comments = $app['dao.comment']->findAllByChapter($id);
         
-        return $app['twig']->render('chapter.html.twig', array(
+        return $app['twig']->render('Home/chapter.html.twig', array(
             'prev' => $prev,
             'next' => $next,
             'chapter' => $chapter,
@@ -70,6 +72,7 @@ class HomeController {
      * @param Application $app Silex application
      */
     public function loginAction(Request $request, Application $app) {
+        
         return $app['twig']->render('login.html.twig', array(
             'error'         => $app['security.last_error']($request),
             'last_username' => $app['session']->get('_security.last_username'),

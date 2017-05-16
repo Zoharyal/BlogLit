@@ -41,7 +41,7 @@ class AdminController {
             $app['session']->getFlashBag()->add('success', 'Le chapitre a été ajouté avec succès.');
             return $app->redirect($app['url_generator']->generate('admin'));
         }
-        return $app['twig']->render('chapter_form.html.twig', array('title' => 'Nouveau Chapitre',
+        return $app['twig']->render('Admin/chapter_form.html.twig', array('title' => 'Nouveau Chapitre',
               'chapterForm' => $chapterForm->createView()));
     }
 

@@ -13,9 +13,11 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options) 
     {
         $builder
-            ->add('author', TextType::class, array(
+            ->add('author', TextType::class, array( 
+                'attr' => array('class' => 'Authorhidden'),
+                'label_attr' => array('class' => 'Authorlabel'),
             'constraints' => array(new Assert\NotBlank(), new Assert\Length(array('min' => 1)))))
-            ->add('content', TextareaType::class, array(
+            ->add('content', TextareaType::class, array(  'label' => 'Contenu',
             'constraints' => array(new Assert\NotBlank(), new Assert\Length(array('min' => 10)))));
     }
     
@@ -23,3 +25,5 @@ class CommentType extends AbstractType
         return 'comment';
     }
 }
+
+//Regarder le français

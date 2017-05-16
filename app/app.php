@@ -70,6 +70,9 @@ $app['dao.comment'] = function ($app) {
         case 404:
             $message = 'La ressource demandé n\'a pas été trouvé';
             break;
+        case 500:
+            $message = " Url Inconnue";
+            break;
         default:
             $message = "On dirait qu'il y une erreur.";
     }

@@ -165,3 +165,8 @@ body{
 {
     height: auto;
 }
+ 
+.Authorlabel,.Authorhidden
+{
+    display: none;
+}

@@ -39,7 +39,7 @@
                     <td class="text-center"> Le  {{ chapter.dateAjout|date("d/m/y") }}</td>
                     <td class="text-center">
                         <a href="{{ path('admin_chapter_edit', { 'id': chapter.id }) }}" class="btn btn-info btn-xs" title="Editer"><span class="glyphicon glyphicon-edit"></span></a>
-                        <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#chapterDialog{{ chapter.id }}"><span class="glyphicon glyphicon-remove"></span>
+                        <button type="button" class="btn btn-danger btn-xs" title="Supprimer" data-toggle="modal" data-target="#chapterDialog{{ chapter.id }}"><span class="glyphicon glyphicon-remove"></span>
                         </button>
                         <div class="modal fade" id="chapterDialog{{ chapter.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -64,7 +64,7 @@
             </table>
         </div>
         {% else %}
-        <div class="alert alert-warning">Aucuns chapitres ne correspond </div>
+        <div class="alert alert-warning">Aucuns chapitres ne correspondent </div>
         {% endif %}
         <a href="{{ path('admin_chapter_add') }}"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Ajouter un chapitre</button></a>
     </div>
@@ -86,8 +86,8 @@
                     <td class="text-center">{{ comment.author}}</td>
                     <td class="text-center">{{ comment.content | truncate(60) }}</td>
                     <td class="text-center">
-                        <a href="{{ path('admin_comment_edit', { 'id': comment.id }) }}" class="btn btn-info btn-xs" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
-                        <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#commentDialog{{ comment.id }}"><span class="glyphicon glyphicon-remove"></span>
+                        <a href="{{ path('admin_comment_edit', { 'id': comment.id }) }}" class="btn btn-info btn-xs" title="Editer"><span class="glyphicon glyphicon-edit"></span></a>
+                        <button type="button" class="btn btn-danger btn-xs" title="Supprimer" data-toggle="modal" data-target="#commentDialog{{ comment.id }}"><span class="glyphicon glyphicon-remove"></span>
                         </button>
                         <div class="modal fade" id="commentDialog{{ comment.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
