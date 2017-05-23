@@ -73,7 +73,7 @@ class HomeController {
      */
     public function loginAction(Request $request, Application $app) {
         
-        return $app['twig']->render('login.html.twig', array(
+        return $app['twig']->render('Home/login.html.twig', array(
             'error'         => $app['security.last_error']($request),
             'last_username' => $app['session']->get('_security.last_username'),
         ));
